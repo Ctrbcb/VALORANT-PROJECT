@@ -13,6 +13,8 @@ let g_matriz = SVG1.append('g').attr('id', 'matriz')
 let g_stats = SVG1.append('g').attr('id', 'info-agent');
 
 g_stats.append('rect').attr('width', 400).attr('height', 600).attr('fill', 'red')
+let scrollLimit = 1900; // Define tu límite aquí.
+
 
 function displayMatrix(data_agents) {
 
@@ -77,3 +79,13 @@ function show_info_agent(info) {
 
 
 }
+
+window.onscroll = function() {
+    let scrollPosition = window.scrollY;
+    let new_y = Math.min(scrollPosition, scrollLimit);
+    
+    d3.select("#info-agent")
+      .select("rect")
+      .attr('y', new_y);
+  }
+  
