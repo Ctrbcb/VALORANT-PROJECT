@@ -84,7 +84,7 @@ function show_info_agent(info) {
     
 
     g_matriz.selectAll("g").filter(infoinfo => infoinfo != info)
-                    .attr("opacity", 0.2);
+                    .attr("opacity", 0.3);
     
     console.log(info);
 
