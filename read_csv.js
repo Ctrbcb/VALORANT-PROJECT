@@ -8,7 +8,7 @@ function read_agents(PATH_agents) {
                     id: index,
                     name: d.Name,
                     rol: d.Role,
-                    descr: d.Biography,
+                    bio: d.Biography,
                     img: d.Image,
                     ability1: d.ability1,
                     ability1_desc: d.ability1_desc,

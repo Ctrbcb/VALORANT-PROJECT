@@ -13,7 +13,8 @@ let g_matriz = SVG1.append('g').attr('id', 'matriz')
 let g_stats = SVG1.append('g').attr('id', 'info-agent');
 
 g_stats.append('rect').attr('width', 400).attr('height', 600).attr('fill', '#09253e')
-
+// Hacemos que el rectangulo de las stats inicialmente no se vea
+g_stats.attr('opacity', 0);
 
 
 let scrollLimit = 2000; // límite de scroll para el recuadro de las stats de los agentes.
@@ -57,18 +58,15 @@ function displayMatrix(data_agents) {
     g_matriz.selectAll("g").data(data_agents).join("g")
     .append('text').text(d => d.name)
     .attr("x", 75).attr("y", 16)
-    .attr('fill', '#156AB7').attr('font-size', 15).attr('font-family', 'sans-serif')
+    .attr('fill', '#156AB7').attr('font-size', 15).attr('font-family', 'sans-serif').attr('font-weight', 'bold')
     .attr("transform", (d, i) => {
         return `translate(${scale_x(i % 4)}, ${scale_y(Math.floor(i / 4))})`
     })
 
+    
 
     g_matriz.selectAll('g').on('click', (event, d) => { 
 
-        // g_matriz.selectAll('g').transition()
-        // .duration(300)
-        // .attr("opacity", 1);
-        
         
         show_info_agent(d) 
         
@@ -76,29 +74,43 @@ function displayMatrix(data_agents) {
 
 }
 
-function show_info_agent(info) {
+  function show_info_agent(info) {
 
+    console.log(info);
+
+    //destacamos el agente seleccionado, mientras opaca los demas
     g_matriz.selectAll("g")
                 .attr("opacity", 1);
 
-    
-
     g_matriz.selectAll("g").filter(infoinfo => infoinfo != info)
                     .attr("opacity", 0.3);
-    
-    console.log(info);
+
+    // g_stats.attr('opacity', 0);
+
+    // hacemos que el rectangulo de las stats se vea con una transición
+    g_stats.transition().duration(2000).attr('opacity', 1);
 
     g_matriz.selectAll('g').select('rect').transition().duration(800)
-        .attr('height', 280).attr('width', 200);
+        .attr('height', 280).attr('width', 200).attr('stroke-width', 5);
 
+    // hacemos que el recuadro del agente seleccionado se vea mas grande para agregar su biografia en la zona agrandada
     let agent_id = CSS.escape(info.id.toString());
     let g = g_matriz.select(`#${agent_id}`);
     g.raise();
     g.select('rect').transition().duration(2000)
-        .attr('height', 330).attr('width', 365)
+        .attr('height', 330).attr('width', 365).attr('stroke-width', 7);
     
-    // mostramos las habilidades y ultimate del agente 
+    console.log(info.bio);
 
+    
+    // mostramos la biografia del agente seleccionado en el mismo recuadro
+
+    // g_matriz.select('g').select('text').remove();
+    // g_matriz.select('g').append('text').text(info.bio).attr('x', 210).attr('y', 30).raise()
+    
+    
+    
+    // mostramos las habilidades y ultimate del agente seleccionado en el recuadro de las stats
     g_stats.selectAll('text').remove();
    
     g_stats.append('text').text('STATS AND ABILITIES').attr('x',100).attr('y', 30)
@@ -127,11 +139,6 @@ function show_info_agent(info) {
     g_stats.append('text').text(ulti_desc4).attr('x', 20).attr('y', 390)
 
 
-
-    
-
-    
-
     g_stats.append('text').text(info.ability1).attr('x', 20).attr('y', 410)
         .attr('fill', '#156AB7').attr('font-size', 15).attr('font-family', 'sans-serif')
 
@@ -142,7 +149,7 @@ function show_info_agent(info) {
     let ability_desc2 = ability1_desc.substring(50, 100);
     let ability_desc3 = ability1_desc.substring(100, 150);
 
-    g_stats.append('text').text(ability_desc1).attr('x', 20).attr('y', 425)
+    g_stats.append('text').text(ability_desc1).attr('x', 20).attr('y', 425).attr('class', 'desc-habilities')
     g_stats.append('text').text(ability_desc2).attr('x', 20).attr('y', 440)
     g_stats.append('text').text(ability_desc3).attr('x', 20).attr('y', 455)
     
@@ -171,11 +178,6 @@ function show_info_agent(info) {
     g_stats.append('text').text(ability3_desc2).attr('x', 20).attr('y', 575)
     g_stats.append('text').text(ability3_desc3).attr('x', 20).attr('y', 590)
    
-
-
-
-
-
 }
 
 window.onscroll = function() {
@@ -187,3 +189,4 @@ window.onscroll = function() {
     
   }
   
+
