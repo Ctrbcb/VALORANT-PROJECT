@@ -96,17 +96,26 @@ function displayMatrix(data_agents) {
     // hacemos que el recuadro del agente seleccionado se vea mas grande para agregar su biografia en la zona agrandada
     let agent_id = CSS.escape(info.id.toString());
     let g = g_matriz.select(`#${agent_id}`);
-    g.raise();
-    g.select('rect').transition().duration(2000)
-        .attr('height', 330).attr('width', 365).attr('stroke-width', 7);
     
-    console.log(info.bio);
+    g.select('rect').transition().duration(2000)
+        .attr('height', 330).attr('width', 365).attr('stroke-width', 5);
+
+    // // mostramos la biografia del agente seleccionado en el mismo recuadro
+    // g.select('text').remove();
+    // g.append('text').text(info.bio).attr('x', 210).attr('y', 30).raise()
+    // .attr('class', 'desc-bio')
+    // .attr('fill', '#156AB7').attr('font-size', 15).attr('font-family', 'sans-serif')
+    // .attr('font-weight', 'bold');
+
+    console.log(info);
 
     
     // mostramos la biografia del agente seleccionado en el mismo recuadro
 
-    // g_matriz.select('g').select('text').remove();
-    // g_matriz.select('g').append('text').text(info.bio).attr('x', 210).attr('y', 30).raise()
+    g.select('text').remove();
+    g.append('text').text(info.rol).attr('x', 210).attr('y', 280).transition().duration(2000)
+    .attr('transform', 'rotate(-60, 210, 240)').attr('fill', '#156AB7')
+    .attr('font-size', 60).attr('font-family', 'sans-serif');
     
     
     
@@ -132,14 +141,12 @@ function displayMatrix(data_agents) {
     let ulti_desc3 = ulti_desc.substring(100, 150);
     let ulti_desc4 = ulti_desc.substring(150, 200);
 
+    g_stats.append('text').text(ulti_desc1).attr('x', 10).attr('y', 345)
+    g_stats.append('text').text(ulti_desc2).attr('x', 10).attr('y', 360)
+    g_stats.append('text').text(ulti_desc3).attr('x', 10).attr('y', 375)
+    g_stats.append('text').text(ulti_desc4).attr('x', 10).attr('y', 390)
 
-    g_stats.append('text').text(ulti_desc1).attr('x', 20).attr('y', 345)
-    g_stats.append('text').text(ulti_desc2).attr('x', 20).attr('y', 360)
-    g_stats.append('text').text(ulti_desc3).attr('x', 20).attr('y', 375)
-    g_stats.append('text').text(ulti_desc4).attr('x', 20).attr('y', 390)
-
-
-    g_stats.append('text').text(info.ability1).attr('x', 20).attr('y', 410)
+    g_stats.append('text').text(info.ability1).attr('x', 10).attr('y', 410)
         .attr('fill', '#156AB7').attr('font-size', 15).attr('font-family', 'sans-serif')
 
     // hacemos los textos de la descripcion sean de 3 lineas 
@@ -149,11 +156,10 @@ function displayMatrix(data_agents) {
     let ability_desc2 = ability1_desc.substring(50, 100);
     let ability_desc3 = ability1_desc.substring(100, 150);
 
-    g_stats.append('text').text(ability_desc1).attr('x', 20).attr('y', 425).attr('class', 'desc-habilities')
-    g_stats.append('text').text(ability_desc2).attr('x', 20).attr('y', 440)
-    g_stats.append('text').text(ability_desc3).attr('x', 20).attr('y', 455)
+    g_stats.append('text').text(ability_desc1).attr('x', 10).attr('y', 425).attr('class', 'desc-habilities')
+    g_stats.append('text').text(ability_desc2).attr('x', 10).attr('y', 440)
+    g_stats.append('text').text(ability_desc3).attr('x', 10).attr('y', 455)
     
-
     g_stats.append('text').text(info.ability2).attr('x', 20).attr('y', 475)
         .attr('fill', '#156AB7').attr('font-size', 15).attr('font-family', 'sans-serif')
     
@@ -162,11 +168,11 @@ function displayMatrix(data_agents) {
     let ability2_desc2 = ability2_desc.substring(50, 100);
     let ability2_desc3 = ability2_desc.substring(100, 150);
     
-    g_stats.append('text').text(ability2_desc1).attr('x', 20).attr('y', 490)
-    g_stats.append('text').text(ability2_desc2).attr('x', 20).attr('y', 505)
-    g_stats.append('text').text(ability2_desc3).attr('x', 20).attr('y', 525)
+    g_stats.append('text').text(ability2_desc1).attr('x', 10).attr('y', 490)
+    g_stats.append('text').text(ability2_desc2).attr('x', 10).attr('y', 505)
+    g_stats.append('text').text(ability2_desc3).attr('x', 10).attr('y', 525)
 
-    g_stats.append('text').text(info.ability3).attr('x', 20).attr('y', 545)
+    g_stats.append('text').text(info.ability3).attr('x', 10).attr('y', 545)
         .attr('fill', '#156AB7').attr('font-size', 13).attr('font-family', 'sans-serif')
     
     let ability3_desc = info.ability3_desc;
@@ -174,9 +180,9 @@ function displayMatrix(data_agents) {
     let ability3_desc2 = ability3_desc.substring(50, 100);
     let ability3_desc3 = ability3_desc.substring(100, 150);
 
-    g_stats.append('text').text(ability3_desc1).attr('x', 20).attr('y', 560)
-    g_stats.append('text').text(ability3_desc2).attr('x', 20).attr('y', 575)
-    g_stats.append('text').text(ability3_desc3).attr('x', 20).attr('y', 590)
+    g_stats.append('text').text(ability3_desc1).attr('x', 10).attr('y', 560)
+    g_stats.append('text').text(ability3_desc2).attr('x', 10).attr('y', 575)
+    g_stats.append('text').text(ability3_desc3).attr('x', 10).attr('y', 590)
    
 }
 
@@ -185,8 +191,10 @@ window.onscroll = function() {
     let new_y = Math.min(scrollPosition, scrollLimit);
     
     d3.select("#info-agent")
-    .attr('transform', `translate(0, ${new_y})`);
-    
+    .attr('transform', `translate(0, ${new_y})`);   
   }
   
 
+function displayWeapons(info_weapons){
+
+}

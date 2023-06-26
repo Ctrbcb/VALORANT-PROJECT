@@ -1,4 +1,4 @@
-Name,Weapon Type,Price,Fire Rate,Wall Penetration,Magazine Capacity,HDMG_0,BDMG_0,LDMG_0,HDMG_1,BDMG_1,LDMG_1,HDMG_2,BDMG_2,LDMG_2
+Name,Weapon_Type,Price,Fire_Rate,Wall_Penetration,Magazine_Capacity,HDMG_0,BDMG_0,LDMG_0,HDMG_1,BDMG_1,LDMG_1,HDMG_2,BDMG_2,LDMG_2
 Classic,Sidearm,0,6.75,Low,12,78,26,22,78,26,22,66,22,18
 Shorty,Sidearm,200,3.3,Low,2,36,12,10,24,8,6,9,3,2
 Frenzy,Sidearm,400,10,Low,13,78,26,22,63,21,17,63,21,17

@@ -8,10 +8,19 @@ h1 {
     font-variant: small-caps;
 }
 
+/* Header que se ajusta al anncho de la pantalla */
 #header {
+    width: 100%;
     background-color: #ecdfcf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #ff4654;
+    padding: 10px;
+    margin: 0px;
+
+
+    
 }
 
 #agents-vis {
@@ -39,6 +48,5 @@ grid-gap: 5px;
 .desc-habilities {
     font-family: Verdana, "Lucida Console", monospace;
     font-variant: small-caps;
-    font-size: 15px;
-    color: #ff4654;
-}
+    font-size: 14px;
+} 
