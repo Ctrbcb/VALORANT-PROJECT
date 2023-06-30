@@ -9,21 +9,44 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <link href="images/logo2.jpg" rel="icon">
-    <link href="style.css" rel="stylesheet"> 
+    <link href="style.css" rel="stylesheet">
 
 
 
 </head>
 
 <body>
-        <!-- hacemos que el header sea siempre del ancho de la pantalla -->
+    <!-- hacemos que el header sea siempre del ancho de la pantalla -->
     <div id="header">
         <img src="images/logo.png" width="400px">
-        
-        
+
+
     </div>
 
     <div id="agents-vis">
+        <select id="spider_map" style="opacity:0">
+            <option value="All" selected>All</option>
+            <option value="Split">Split</option>
+            <option value="All">Ascent</option>
+            <option value="Haven">Haven</option>
+            <option value="Icebox">Icebox</option>
+            <option value="Fracture">Fracture</option>
+            <option value="Pearl">Pearl</option>
+            <option value="Lotus">Lotus</option>
+        </select>
+
+        <select id="spider_rank" style="opacity:0">
+            <option value="Unrated" selected>Unrated</option>
+            <option value="Iron">Iron</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Silver">Silver</option>
+            <option value="Gold">Gold</option>
+            <option value="Platinum">Platinum</option>
+            <option value="Diamond">Diamond</option>
+            <option value="Ascendant">Ascendant</option>
+            <option value="Immortal">Immortal</option>
+            <option value="Radiant">Radiant</option>
+        </select>
     </div>
 
     <div id="stats-vis">

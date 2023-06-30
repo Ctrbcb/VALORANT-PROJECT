@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../t03 INFOVIS"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "VALORANT-PROJECT"
+	}
+}

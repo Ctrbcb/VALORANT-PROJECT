@@ -60,6 +60,38 @@ function read_weapons(PATH_weapons) {
     });
 }
 
+const PATH_stats = "datos_y_procesamiento/preprocessed_stats.csv";
+
+function read_stats(PATH_stats) {
+    return new Promise(function (resolve, reject) {
+        d3.csv(PATH_stats).then(function (data) {
+            var dicc = data.map(function (d, index) {
+                return {
+                    rank: d.Rank,
+                    name: d.Name,
+                    role: d.Role,
+                    game: d.Game_Type,
+                    map: d.Map,
+                    game_rank: d.Game_Rank,
+                    kd: parseFloat(d.KD),
+                    kda: d.KDA,
+                    winr: parseFloat(d.Winrate),
+                    pickr: parseFloat(d.Pickrate),
+                    avg: parseFloat(d.Avg_Score),
+                    fb: parseFloat(d.First_Blood),
+                    matches: parseFloat(d.Matches),
+                }
+            });
+
+            resolve(dicc);
+        }).catch(function (error) {
+            reject(error);
+        });
+    });
+
+}
+
+
 var data_agents;
 
 read_agents(PATH_agents).then(function (data) {
@@ -70,7 +102,9 @@ read_agents(PATH_agents).then(function (data) {
 });
 
 var data_weapons;
+
 read_weapons(PATH_weapons).then(function (data) {
+
     data_weapons = data;
     displayWeapons(data_weapons);
 }
@@ -78,5 +112,21 @@ read_weapons(PATH_weapons).then(function (data) {
     console.error('Error al cargar las armas: ' + error);
 }
 );
+
+var data_stats;
+
+read_stats(PATH_stats).then(function (data) {
+
+    data_stats = data;
+    console.log(data_stats)
+    // displaySpiderChart(data_stats);
+}
+
+).catch(function (error) {
+    console.error('Error al cargar las armas: ' + error);
+}
+);
+
+
 
 

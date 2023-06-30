@@ -1,4 +1,4 @@
-Rank,Name,Role,Game Type,Map,Game Rank,KD,KDA,Win %,Pick %,Avg. Score,First Blood %,Matches
+Rank,Name,Role,Game_Type,Map,Game_Rank,KD,KDA,Winrate,Pickrate,Avg_Score,First_Blood,Matches
 1,Astra,controller,Competitive,All,Unrated,1.04,"['15.1', '14.5', '5.8']",48.6,0.8,211,0.1,12503
 2,Killjoy,sentinel,Competitive,All,Unrated,0.94,"['13.4', '14.2', '4']",47.8,4.4,195,0.2,65401
 3,Reyna,duelist,Competitive,All,Unrated,1.14,"['17.2', '15.1', '4.4']",47.7,13.7,246,0.1,204902
